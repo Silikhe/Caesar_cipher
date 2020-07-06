@@ -1,5 +1,6 @@
 package com.company;
 import java.io.*;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -50,7 +51,32 @@ public class Main {
 
 
     }}
+    public String encoderFunc(){
+        String stringPassingEncoding = this.inputString.toUpperCase();
+        int nextCharacterIndex = 0;
+        for (int i = 0; i < stringPassingEncoding.length(); i++) {
+            int characterIndex = Arrays.binarySearch(alphabeticalLetters, stringPassingEncoding.charAt(i));
+            if (characterIndex == -1) {
+                continue;
+            } else{
+                if (characterIndex <= 26-key) {
+                    nextCharacterIndex = characterIndex + key;
+                } else {
+                    nextCharacterIndex = (characterIndex + key) - 26;
+                }
+                char charForEncoding = alphabeticalLetters[nextCharacterIndex];
+                stringPassingEncoding = stringPassingEncoding.substring(0, i)
+                        + charForEncoding + stringPassingEncoding.substring(i + 1);
+            }
+        }
+        return stringPassingEncoding;
+    }
 
+    public String getEncodedString() {
+        this.encodedString = encoderFunc();
+        return this.encodedString;
+    }
+}
 
 //    public static void main(String[] args) throws IOException {
 //	// write your code here
