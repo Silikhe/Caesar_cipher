@@ -76,48 +76,51 @@ public class Main {
         this.encodedString = encoderFunc();
         return this.encodedString;
     }
+
+
+    public static void ia(String[] args) throws IOException {
+        // write your code here
+        String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I",
+                "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
+
+//          String[]  cleanerAlphas;
+        //finding the index of alphabets
+        for (int i =0; i < alphabet.length; i++){
+        }
+
+//                 System.out.println(alphabet);
+        //Enter data using BufferReader
+        BufferedReader reader =
+                new BufferedReader(new InputStreamReader(System.in));
+
+        // Reading data using readLine
+        String word = reader.readLine();
+
+
+        //splting the words entered
+        String[] wordRefined = word.split("");
+//        System.out.println(wordRefined);
+
+        //Desired number
+        BufferedReader number =
+                new BufferedReader(new InputStreamReader(System.in));
+        // Reading data using readLine
+        String key = number.readLine();
+//        System.out.println("values:" + key);
+//        System.out.println( int key;);
+
+
+        //looping through to find the index of entered value
+        for (int j=0; j< wordRefined.length; j++){
+            System.out.println(wordRefined[j]);
+            //push the letters into an array
+
+        }
+
+        //loop through the alphabet and find the in
+    }
+
+};
+
 }
 
-//    public static void main(String[] args) throws IOException {
-//	// write your code here
-//            String[] alphabet = {"A", "B", "C", "D", "E", "F", "G", "H", "I",
-//    "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z" };
-//
-////          String[]  cleanerAlphas;
-//            //finding the index of alphabets
-//            for (int i =0; i < alphabet.length; i++){
-//            }
-//
-////                 System.out.println(alphabet);
-//        //Enter data using BufferReader
-//        BufferedReader reader =
-//                new BufferedReader(new InputStreamReader(System.in));
-//
-//        // Reading data using readLine
-//        String word = reader.readLine();
-//
-//
-//        //splting the words entered
-//        String[] wordRefined = word.split("");
-////        System.out.println(wordRefined);
-//
-//        //Desired number
-//        BufferedReader number =
-//                new BufferedReader(new InputStreamReader(System.in));
-//        // Reading data using readLine
-//        String key = number.readLine();
-////        System.out.println("values:" + key);
-////        System.out.println( int key;);
-//
-//
-//     //looping through to find the index of entered value
-//        for (int j=0; j< wordRefined.length; j++){
-//            System.out.println(wordRefined[j]);
-//            //push the letters into an array
-//
-//        }
-//
-//        //loop through the alphabet and find the in
-//    }
-
-//};
