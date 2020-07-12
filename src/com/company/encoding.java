@@ -1,40 +1,32 @@
+//importing the packages needed
+import Decoder.Decoder;
+import Encoder.Encoder;
 
-import java.util.Arrays;
+import java.io.Console;//java console
+import java.io.IOException;
+import java.util.Scanner;
 
-public class Encoder {
 
-    private String inputString;
-    private String encodedString;
-    private Character[] alphabeticalLetters = {'A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z' } ;
-    private int key = 0;
+public class App{
+    public static void main(String[] args) throws IOException {
+        //enter desired shift key
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter desired shift key:");
+        int key = scanner.nextInt();
+        Console myConsole = System.console();
+        System.out.println("What Message would you like to encode?");
+        String inputMessage = myConsole.readLine();//get user's response here.
+        //pass the input message to the encoder to be encoded.
+        Encoder encryptMessage = new Encoder(inputMessage);
+        String encodedStatement = encryptMessage.getEncodedString();//use getter method to get the encoded message
 
-    public Encoder(String inputString ) {
-        this.inputString = inputString;
-    }
+        //Return the statement to it's original state
+        Decoder statementDecoder = new Decoder(encodedStatement);
+        String decodedStatement = statementDecoder.getDecodedString();
 
-    public String encoderFunc(){
-        String stringPassingEncoding = this.inputString.toUpperCase();
-        int nextCharacterIndex = 0;
-        for (int i = 0; i < stringPassingEncoding.length(); i++) {
-            int characterIndex = Arrays.binarySearch(alphabeticalLetters, stringPassingEncoding.charAt(i));
-            if (characterIndex == -1) {
-                continue;
-            } else{
-                if (characterIndex <= 26-key) {
-                    nextCharacterIndex = characterIndex + key;
-                } else {
-                    nextCharacterIndex = (characterIndex + key) - 26;
-                }
-                char charForEncoding = alphabeticalLetters[nextCharacterIndex];
-                stringPassingEncoding = stringPassingEncoding.substring(0, i)
-                        + charForEncoding + stringPassingEncoding.substring(i + 1);
-            }
-        }
-        return stringPassingEncoding;
-    }
-
-    public String getEncodedString() {
-        this.encodedString = encoderFunc();
-        return this.encodedString;
+        //Interact with the terminal
+        /convert to uppercase/System.out.println("This is your statement in uppercase"+" "+"("+(inputMessage.toUpperCase())+"."+")");
+        /encoded statement/ System.out.println("Look"+" "+(encodedStatement)+"is the encoded version of your statement");
+       /original statement/ System.out.println("This is Your statement;"+" "+(decodedStatement)+ " The decoded version!!");
     }
 }
